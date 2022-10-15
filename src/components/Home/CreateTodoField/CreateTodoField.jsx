@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
+import {IoIosAddCircleOutline} from 'react-icons/io'
 
 const CreateTodoField = ({ setTodos}) => {
   const [tittle, setTittle] = useState("");
@@ -23,6 +24,10 @@ setTittle('');
       value={tittle}
       onKeyPress={e => e.key === 'Enter' && addTodo(tittle)}
       />
+      <IoIosAddCircleOutline
+       size={28} className='text-gray-500 hover:text-pink-400 transition-colors ease-in-out duration-300'
+       onClick={() => addTodo(tittle)}
+       />
     </div>
   );
 };
