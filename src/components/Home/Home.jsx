@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./Item/TodoItem";
 import { nanoid } from 'nanoid'
 import CreateTodoField from "./CreateTodoField/CreateTodoField";
@@ -6,20 +6,16 @@ import CreateTodoField from "./CreateTodoField/CreateTodoField";
 // const data = ;
 
 const Home = () => {
-	const [todos, setTodos] = useState(
-    [
-      // {
-      //   id: nanoid(),
-      //   tittle: "Первая тестовая задача",
-      //   isCompleted: false,
-      // },
-      // {
-      //   id: nanoid(),
-      //   tittle: "Вторая тестовая задача",
-      //   isCompleted: false,
-      // },
-    ]
-  )
+	const [todos, setTodos] = useState([]);
+
+  useEffect(()=> {
+    const data = window.localStorage.getItem('saved_todos')
+    if (data !== null) setTodos(JSON.parse(data))
+  }, [setTodos])
+  
+  useEffect(()=> {
+    window.localStorage.setItem('saved_todos', JSON.stringify(todos))
+  }, [todos])
   
 
 	const changeTodo = id => {

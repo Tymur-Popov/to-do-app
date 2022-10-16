@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import {IoIosAddCircleOutline} from 'react-icons/io'
 
 const CreateTodoField = ({ setTodos}) => {
   const [tittle, setTittle] = useState("");
+
 
   const addTodo = tittle => {setTodos(prev => [{
     id: nanoid(),
